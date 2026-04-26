@@ -10,12 +10,27 @@
 
 
 # for the match
+# import re
+# text = "this is dipendra rayamajhi aspiring to be a devops engineer"
+# pattern = r"this"
+# match = re.match(pattern, text)
+# if match:
+#     print("pattern found in the text:", match.group())
+# else:
+#     print("pattern not found in the text")
+
+
+# replce in regex
+# import re
+# text = "this is dipendra rayamajhi aspiring to be a devops engineer"
+# pattern = r"devops"
+# replacement = "teach ops"
+# replace_text = re.sub(pattern, replacement, text)
+# print("replaced text is", replace_text)
+
+# split in regex
 import re
-text = "this is dipendra rayamajhi aspiring to be a devops engineer"
-pattern = r"this"
-match = re.match(pattern, text)
-if match:
-    print("pattern found in the text:", match.group())
-else:
-    print("pattern not found in the text")
-    
+text = "this, is dipendra, rayamajhi, aspiring to be, a devops, engineer"
+pattern = r","
+split_text = re.split(pattern, text)
+print("split text is", split_text)
