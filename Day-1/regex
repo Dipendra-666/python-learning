@@ -1,0 +1,9 @@
+# for the search
+import re
+text = "this is dipendra rayamajhi aspiring to be a devops engineer"
+pattern = r"devops"
+search = re.search(pattern, text)
+if search:
+    print("pattern found in the text:", search.group())
+else:
+    print("pattern not found in the text")
