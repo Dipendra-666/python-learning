@@ -10,6 +10,11 @@ list_number = [1,4,3,5,6]
 list_number.sort()
 print("sorted list is:", list_number)
 
+# list are hetrogenious in neature
+list_random = [1, "dipendra", 3.14, True]
+print("list of random values are:", list_random)
+print(list_random[0:3])
+
 #tuple example 
 
 # s3_bucket_list = ("dipendra-bucket-1", "dipendra-bucket-2", "dipendra-bucket-3")
