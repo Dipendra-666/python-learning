@@ -1,1 +1,1 @@
-everything i learned in python will be committed in this repo!!!
+everything i learned in python will be committed in this repo!!
