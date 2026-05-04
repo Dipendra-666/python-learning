@@ -7,6 +7,7 @@ logs = [
     "ERROR Timeout occurred",
     "INFO User logged in",
     "WARNING High memory usage"
+    "ERROR Failed to load module"
 ]
 
 for line in logs:
