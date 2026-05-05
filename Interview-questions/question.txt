@@ -1,6 +1,6 @@
 what is docker?
 => docker is an open source containerzation platform where it enables dev or devops engineer to package their application and run it into 
-the container.
+the container and also explain what you have done in docker.
 
 what is the difference between container and vm?
 =>Containers and virtual machines both provide isolated environments to run applications, but they differ in how they achieve that isolation.
@@ -10,3 +10,10 @@ what is the difference between container and vm?
  resource usage. However, they offer slightly less isolation compared to VMs. In practice, VMs are preferred when strong isolation
  or different operating systems are needed, while containers are widely used for microservices,
  CI/CD pipelines, and scalable applications due to their speed and efficiency.
+
+what are the lifecycle of docker?
+=>Docker lifecycle refers to the stages an application goes through from building the image to running and managing containers using a tool like Docker.
+It starts with writing a Dockerfile, where we define the application environment—like base image, dependencies, and commands. Then we build the Docker image from that Dockerfile. This image is a read-only template that contains everything needed to run the application.
+Once the image is built, we can optionally push it to a registry like Docker Hub so it can be shared or deployed in different environments. After that, we create and run containers from the image. A container is a running instance of that image.
+During runtime, we can manage the container—start, stop, restart, or monitor it depending on requirements. If needed, we can also update the application by modifying the Dockerfile, rebuilding the image, and redeploying new containers.
+Finally, when the container is no longer needed, we stop and remove it, and optionally clean up unused images to free resources.
