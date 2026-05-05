@@ -17,3 +17,42 @@ It starts with writing a Dockerfile, where we define the application environment
 Once the image is built, we can optionally push it to a registry like Docker Hub so it can be shared or deployed in different environments. After that, we create and run containers from the image. A container is a running instance of that image.
 During runtime, we can manage the container—start, stop, restart, or monitor it depending on requirements. If needed, we can also update the application by modifying the Dockerfile, rebuilding the image, and redeploying new containers.
 Finally, when the container is no longer needed, we stop and remove it, and optionally clean up unused images to free resources.
+
+what are the differnt docker components?
+=> Docker components are the core parts that make up how Docker works, mainly including the client, daemon, images, containers, and registry.
+
+First, the Docker Client is what we use to interact with Docker using commands like docker build or docker run. It sends these requests to the 
+Docker Daemon (the Docker engine), which is the backend service responsible for actually building images, running containers, and managing everything.
+
+Then we have Docker Images, which are read-only templates that contain the application and its dependencies. From these images, we create Containers,
+ which are the running instances of those images.
+
+Docker also uses a Registry, like Docker Hub, to store and share images. We can push images to the registry and pull them whenever needed.
+
+Additionally, there are supporting components like volumes for persistent storage and networks for communication between containers.
+
+
+what is the difference between docker add and docker copy?
+=>Both COPY and ADD are instructions used in a Dockerfile to move files into an image when building with Docker, but they have some key differences.
+
+COPY is simple and predictable—it only copies files or directories from the local system into the container image.
+
+ADD, on the other hand, has additional features. It can not only copy files, but also automatically extract compressed files like .tar, and it can fetch files from a URL.
+
+Because ADD has these extra behaviors, it can sometimes be less predictable. So in best practices, we usually prefer COPY unless we specifically need those extra features like auto-extraction.
+
+
+
+what is the difference between ENTRYPOINT and CMD ?
+=>Both CMD and ENTRYPOINT in a Dockerfile (used with Docker) define what command runs when a container starts, but they behave differently.
+
+CMD is used to provide default arguments or a default command, and it can be easily overridden when running the container using docker run.
+
+ENTRYPOINT, on the other hand, defines the main command that will always run. It’s not overridden by default—instead, any arguments passed in docker run are appended to it.
+
+So the key difference is:
+
+CMD → flexible, can be overridden
+ENTRYPOINT → fixed, acts as the main executable
+
+In practice, we often use them together—ENTRYPOINT for the main command, and CMD for default arguments
