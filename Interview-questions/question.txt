@@ -92,3 +92,23 @@ creating separate networks
 controlling network attachment
 and restricting communication when needed
 
+
+what is the multi stage build in docker?
+=>Multi-stage build in Docker is a technique used in a Dockerfile to create smaller and more secure images by separating the build process into multiple stages.
+
+In the first stage, we use a builder image that contains all the heavy tools—like compilers, package managers, and dependencies—to build the application. Then in the next stage, we use a lightweight base image and copy only the final output (like compiled code or binaries) from the builder stage.
+
+This way, the final image does not include unnecessary tools or files, which reduces image size and improves security.
+
+So instead of shipping everything, we only ship what is required to run the application
+
+
+what is the distro less images give one example?
+=>Distroless images are minimal container images in Docker that do not include a full operating system distribution. They only contain the application and the required runtime libraries, and exclude things like package managers, shells, and debugging tools.
+
+Because of this, distroless images are smaller in size and more secure, as they reduce the attack surface—there are no extra tools that an attacker could use inside the container.
+
+A common example is the distroless images provided by Google, such as:
+ gcr.io/distroless/nodejs or gcr.io/distroless/java
+
+So instead of using something like Ubuntu as a base image, we use a distroless image that only contains what is strictly necessary to run the application.
