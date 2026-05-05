@@ -1,0 +1,12 @@
+what is docker?
+=> docker is an open source containerzation platform where it enables dev or devops engineer to package their application and run it into 
+the container.
+
+what is the difference between container and vm?
+=>Containers and virtual machines both provide isolated environments to run applications, but they differ in how they achieve that isolation.
+ A virtual machine runs on top of a hypervisor and includes a full guest operating system, which makes it heavier and slower to start, but
+ provides strong isolation. On the other hand, containers run on top of the host operating system and share its kernel, using tools like
+ Docker. Because they don’t require a full OS, containers are lightweight, start very quickly, and are more efficient in terms of
+ resource usage. However, they offer slightly less isolation compared to VMs. In practice, VMs are preferred when strong isolation
+ or different operating systems are needed, while containers are widely used for microservices,
+ CI/CD pipelines, and scalable applications due to their speed and efficiency.
