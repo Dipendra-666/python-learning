@@ -112,3 +112,16 @@ A common example is the distroless images provided by Google, such as:
  gcr.io/distroless/nodejs or gcr.io/distroless/java
 
 So instead of using something like Ubuntu as a base image, we use a distroless image that only contains what is strictly necessary to run the application.
+
+
+
+Real Time Challenges with Docker?
+=> 1. docker is a single daemon process which can cause a single point of failure,if the docker deamon goes down for some reason
+all the applications are down.
+
+2. docker daemon runs as a root user which is a security threat. any process running as a root can 
+have adverse effects. when it is comprised for security reasons, it can impact other
+applicaitons or containers on the host
+
+3.resource constraints: if you are running too many containeres on a single host, you may expereince issues with
+resources constraitns. this can result in slow performance or crashes.
