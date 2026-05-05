@@ -125,3 +125,14 @@ applicaitons or containers on the host
 
 3.resource constraints: if you are running too many containeres on a single host, you may expereince issues with
 resources constraitns. this can result in slow performance or crashes.
+
+
+
+what steps would you take to secure containers?
+=> 1. use distroless or images with not too many packages as your final image in multi stage build , so that 
+there is less chance of CVE or secuirty issues
+
+2. ensure that the networking is configured properly. this is one of the most common resons for 
+security issues, if required configure custom bridge networks and assign them to isolate containers.
+
+3. use utilities like sync to scan your container images.
