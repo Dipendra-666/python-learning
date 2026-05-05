@@ -56,3 +56,39 @@ CMD → flexible, can be overridden
 ENTRYPOINT → fixed, acts as the main executable
 
 In practice, we often use them together—ENTRYPOINT for the main command, and CMD for default arguments
+
+
+
+what are the networking types in docker and what is the default?
+=>“Docker (Docker) provides several networking types that define how containers communicate with each other and the outside world.
+
+The main network types are:
+
+1.Bridge network – This is the default network. Containers get their own internal IP and can communicate with each other on the same bridge. External access is done using port mapping.
+2.Host network – The container shares the host’s network stack. It doesn’t get its own IP, and runs directly on the host’s ports, which gives better performance but less isolation.
+3.None network – Completely disables networking for the container. No external or internal communication.
+4.Overlay network – Used in multi-host environments (like Docker Swarm) to allow containers across different hosts to communicate.
+5.Macvlan network – Assigns a MAC address to the container, making it appear like a physical device on the network.
+
+The default network type is:
+= Bridge network.
+
+
+
+can you explain how to isolate networking between the containers ?
+=>To isolate networking between containers in Docker, we mainly control which networks containers are attached to.
+
+By default, containers run on the same bridge network, so they can communicate with each other. To isolate them, we create separate custom bridge networks and attach containers only to the networks they should belong to.
+
+For example, if we have a frontend and a database, we can put them in one network, and keep other services in a different network so they can’t communicate directly. Containers in different networks are isolated unless we explicitly connect them.
+
+We can also use the none network for complete isolation, where a container has no network access at all.
+
+Another approach is to use network policies or firewall rules (like iptables) to restrict traffic between containers, even if they are on the same network.
+
+So overall, isolation is achieved by:
+
+creating separate networks
+controlling network attachment
+and restricting communication when needed
+
