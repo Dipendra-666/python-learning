@@ -3,7 +3,6 @@ from requests.auth import HTTPBasicAuth
 import json
 import os
 
-# ============ CONFIGURATION ============
 JIRA_URL = "https://dipendra32.atlassian.net"      
 
 PROJECT_KEY = "DR"
@@ -16,7 +15,6 @@ headers = {
     "Content-Type": "application/json"
 }
 
-# ============ CREATE A TASK ============
 def create_task(summary, description=""):
     url = f"{JIRA_URL}/rest/api/3/issue"
 
@@ -58,16 +56,10 @@ def create_task(summary, description=""):
         print(response.text)
         return None
 
-
-# ============ EXAMPLES ============
-
-# Create a single task
 create_task(
     summary="Set up CI/CD pipeline",
     description="Configure GitHub Actions for automated deployment"
 )
-
-# Create multiple tasks in bulk
 tasks = [
     {"summary": "Design database schema", "description": "Create ERD for the new module"},
     {"summary": "Write unit tests", "description": "Cover auth module with tests"},
