@@ -356,3 +356,34 @@ Both **Custom Data** and **User Data** allow you to pass information to a Virtua
 
 
 
+
+
+# Azure Bastion
+
+Azure Bastion is a **managed Azure service that provides secure remote access to Virtual Machines without exposing them to the public internet**.
+
+Instead of assigning a public IP address to a VM and allowing direct SSH (Linux) or RDP (Windows) access, Azure Bastion provides a secure connection through the **Azure Portal over HTTPS (Port 443)**.
+
+## Purpose of Azure Bastion
+
+- Provides secure SSH/RDP access to Azure Virtual Machines.
+- Removes the need for public IP addresses on VMs.
+- Reduces exposure to internet-based attacks such as brute-force attacks.
+- Provides centralized access management using Azure RBAC.
+- Simplifies secure administration of VMs inside a Virtual Network.
+
+## When Azure Bastion is Used
+
+Azure Bastion is commonly used when:
+
+- Virtual Machines are deployed in a **private subnet** without public IP addresses.
+- Administrators need secure access for maintenance or troubleshooting.
+- Organizations want to avoid opening inbound SSH (Port 22) or RDP (Port 3389) ports to the internet.
+- Production environments require a more secure alternative to direct VM access.
+
+## Interview Answer
+
+> **Azure Bastion is a managed service that provides secure SSH and RDP access to virtual machines through the Azure Portal without requiring public IP addresses on the VMs. It is used in production environments where VMs are kept private and administrators need secure remote access without exposing management ports like 22 and 3389 to the internet.**
+
+
+
