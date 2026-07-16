@@ -307,3 +307,52 @@ A common production setup is to use **both together**:
 ### Interview Answer
 
 > **An NSG is a distributed firewall that controls traffic at the subnet or NIC level using IP addresses, ports, and protocols. Azure Firewall is a centralized, managed firewall that provides advanced features like application filtering, NAT, threat intelligence, and centralized policy management. In production, NSGs are used for workload-level security, while Azure Firewall provides network-wide protection.**
+
+
+
+
+
+# Advantages of Azure Resource Groups
+
+1. **Logical Organization**
+   - Groups related Azure resources (VMs, VNets, Storage Accounts, etc.) into a single container, making them easier to manage.
+
+2. **Simplified Resource Management**
+   - You can deploy, update, monitor, or delete all related resources together.
+
+3. **Role-Based Access Control (RBAC)**
+   - Permissions can be assigned at the Resource Group level, allowing users to manage all resources within the group without configuring each resource individually.
+
+4. **Cost Management and Tagging**
+   - Resource Groups support tagging, making it easier to organize resources and track costs by project, department, or environment.
+
+5. **Lifecycle Management**
+   - Resources with the same lifecycle (e.g., development, testing, production) can be placed in one Resource Group. Deleting the Resource Group removes all contained resources, simplifying cleanup.
+
+### Interview Answer
+
+> **Resource Groups help organize related resources, simplify management, enable RBAC at a group level, improve cost tracking through tags, and make lifecycle management easier by allowing related resources to be managed or deleted together.**
+
+
+
+
+
+# Difference Between Azure Custom Data and User Data
+
+Both **Custom Data** and **User Data** allow you to pass information to a Virtual Machine during deployment, but they have different purposes.
+
+**Custom Data** is primarily used for **initial VM configuration**. It is typically a cloud-init script (Linux) or a startup script that runs when the VM is first created. It is commonly used to install software, configure services, or perform automated setup tasks. After the VM is provisioned, the data is generally not intended to be changed.
+
+**User Data**, on the other hand, is designed to store **application-specific or user-defined information** that the VM can read. Unlike Custom Data, User Data is not automatically executed by the operating system. Applications or scripts running inside the VM can retrieve and use it through the Azure Instance Metadata Service (IMDS).
+
+### Key Difference
+
+- **Custom Data** → Used for **bootstrapping and automating VM setup** during provisioning.
+- **User Data** → Used to **store and retrieve custom information** for applications; it is **not executed automatically**.
+
+### Interview Answer
+
+> **Custom Data is used to automate the initial configuration of a VM, such as running cloud-init or startup scripts during provisioning. User Data is used to pass custom information to the VM that applications can retrieve later through the Azure Instance Metadata Service. The main difference is that Custom Data is meant for VM initialization, whereas User Data is meant for storing application-specific data and isn't executed automatically.**
+
+
+
