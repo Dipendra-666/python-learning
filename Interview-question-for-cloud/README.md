@@ -172,3 +172,104 @@ Instead:
 # Interview Answer
 
 > **An NSG is a network security firewall that controls inbound and outbound traffic using allow and deny rules. An ASG is a logical grouping of Virtual Machines based on their application role. ASGs do not enforce security policies themselves; instead, they are used within NSG rules to simplify rule management. In production environments, ASGs make firewall rules much easier to maintain because rules are based on application groups rather than individual IP addresses.**
+
+
+
+
+
+
+
+
+# How Can You Block Access to Your VM from a Subnet?
+
+In Azure, you can block access to a Virtual Machine from a specific subnet by using a **Network Security Group (NSG)**.
+
+Since an NSG acts as a firewall, you can create a rule that **denies traffic from a particular subnet** before it reaches the VM.
+
+---
+
+# Example Scenario
+
+Suppose you have the following network:
+
+```
+Virtual Network (10.0.0.0/16)
+
+├── Frontend Subnet (10.0.1.0/24)
+│      └── Web VM
+│
+└── Backend Subnet (10.0.2.0/24)
+       └── Database VM
+```
+
+Now imagine you want to **prevent the Frontend Subnet from accessing the Database VM**.
+
+You can achieve this by creating an **Inbound NSG Rule** on the Database VM (or on the Backend Subnet).
+
+---
+
+# NSG Rule
+
+| Priority | Source | Destination | Port | Action |
+|----------|--------|-------------|------|--------|
+| 100 | 10.0.1.0/24 | Database VM | Any | Deny |
+
+This rule blocks all traffic originating from the **Frontend Subnet (10.0.1.0/24)** from reaching the Database VM.
+
+---
+
+# Applying the NSG
+
+The NSG can be associated with either:
+
+- The **Backend Subnet** (affects all resources in that subnet)
+- The **Database VM's Network Interface (NIC)** (affects only that VM)
+
+---
+
+# Traffic Flow
+
+```
+Frontend Subnet
+(10.0.1.0/24)
+        │
+        │
+        ▼
++----------------------+
+|         NSG          |
+|----------------------|
+| Deny 10.0.1.0/24     |
+| Allow Other Traffic  |
++----------------------+
+        │
+        ✖
+   Database VM
+```
+
+The packet reaches the NSG, matches the **Deny** rule, and is dropped before it can reach the VM.
+
+---
+
+# Can We Block an Entire Subnet?
+
+Yes.
+
+Instead of specifying a single IP address, you specify the **CIDR range** of the subnet.
+
+Example:
+
+```
+Source:
+10.0.1.0/24
+
+Action:
+Deny
+```
+
+This blocks **every VM** inside that subnet.
+
+---
+
+# Interview Answer
+
+> **To block access from a subnet to a VM in Azure, I would use a Network Security Group (NSG). I would create an inbound deny rule where the source is the subnet's CIDR range (for example, `10.0.1.0/24`) and the destination is the VM or the subnet containing the VM. The NSG can be associated either with the VM's NIC or the subnet. In production, subnet-level NSGs are commonly used to enforce security policies across multiple resources, while NIC-level NSGs are used when only a specific VM requires different access rules.**
