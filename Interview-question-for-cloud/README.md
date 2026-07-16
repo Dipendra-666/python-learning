@@ -273,3 +273,37 @@ This blocks **every VM** inside that subnet.
 # Interview Answer
 
 > **To block access from a subnet to a VM in Azure, I would use a Network Security Group (NSG). I would create an inbound deny rule where the source is the subnet's CIDR range (for example, `10.0.1.0/24`) and the destination is the VM or the subnet containing the VM. The NSG can be associated either with the VM's NIC or the subnet. In production, subnet-level NSGs are commonly used to enforce security policies across multiple resources, while NIC-level NSGs are used when only a specific VM requires different access rules.**
+
+
+
+
+
+## Are Azure NSGs Stateless or Stateful?
+
+**Azure Network Security Groups (NSGs) are stateful.**
+
+This means if an inbound connection is allowed, the return traffic is **automatically allowed** without needing a separate outbound rule. Similarly, if outbound traffic is allowed, the response traffic is automatically permitted.
+
+### Interview Answer
+
+> **Azure NSGs are stateful. Once a connection is allowed in one direction, the return traffic is automatically allowed, so you don't need to create separate rules for response traffic.**
+
+
+
+
+
+# Difference Between Azure Firewall and NSG
+
+Both **Azure Firewall** and **Network Security Groups (NSGs)** are used to secure Azure resources, but they serve different purposes.
+
+An **NSG** is a basic network firewall that filters inbound and outbound traffic at the **subnet** or **network interface (NIC)** level. It works by evaluating rules based on **source IP, destination IP, port, and protocol (TCP/UDP)**. NSGs are commonly used to control access to individual Virtual Machines or subnets.
+
+In contrast, **Azure Firewall** is a fully managed, centralized firewall service that protects an entire virtual network or multiple virtual networks. Besides filtering traffic based on IPs and ports, it also supports **application-level filtering (Layer 7)**, **FQDN filtering**, **DNAT/SNAT**, **Threat Intelligence**, and centralized security policies. This makes it suitable for enterprise environments where advanced security and centralized management are required.
+
+A common production setup is to use **both together**:
+- **NSGs** secure individual subnets and VMs.
+- **Azure Firewall** acts as the central security gateway for the entire network.
+
+### Interview Answer
+
+> **An NSG is a distributed firewall that controls traffic at the subnet or NIC level using IP addresses, ports, and protocols. Azure Firewall is a centralized, managed firewall that provides advanced features like application filtering, NAT, threat intelligence, and centralized policy management. In production, NSGs are used for workload-level security, while Azure Firewall provides network-wide protection.**
